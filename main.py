@@ -3,6 +3,8 @@ import math
 
 size = math.pi * 2
 
+
+# Source function, according to the task
 def g(x):
     if x < -math.pi / 2:
         try:
@@ -17,6 +19,8 @@ def g(x):
         except OverflowError:
             return float('inf')
 
+        
+# Function to calculate the previous f(x) value. Required to avoid function decreasing
 def previous_f(x):
     global size
     if -size < x < -math.pi / 2:
@@ -36,6 +40,7 @@ def previous_f(x):
     return 0
 
 
+# Integrated g(x)dx == f(x). Assuming Ei(z) = 0 for all x belonging x_array (see below)
 def f(x):
     global size
     if -size < x < -math.pi / 2:
@@ -64,6 +69,7 @@ def f(x):
             return float('inf')
 
 
+# Plotting g(x)
 def run(dx):
     graphic = plt
     x_array = []
@@ -85,6 +91,7 @@ def run(dx):
     graphic.savefig("dx_" + str(dx) + "_g(x)_limited.png", format="png", dpi=300)
 
 
+# Plotting f(x)
 def afterrun(dx):
     graphic = plt
     x_array = []
